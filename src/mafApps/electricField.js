@@ -27,7 +27,7 @@ export default function ChargeField({height}) {
   function chargeAtPoint(point){
     var vector = [0,0];
     protons.concat(electrons).forEach(p => {
-        const q = p.element.props.color =='red' ? -1 :1;
+        const q = p.element.props.color =='red' ? 1 : -1;
         const pos = [p.x,p.y]
         const r = vec.dist(pos,point)
         const direction = vec.norm(vec.sub(pos,point))
