@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Button, Slider} from 'antd';
+import {Button} from 'antd';
 import clamp from "lodash.clamp"
 
 import {
@@ -11,7 +11,7 @@ import {
     Vector,
     Polygon,
   } from "mafs"
-import { relativeTimeRounding } from 'moment';
+//import { relativeTimeRounding } from 'moment';
   
 function round(x){
   return Math.trunc(x*1000)/1000
@@ -45,9 +45,9 @@ function round(x){
     const timeOfFlight =
       Math.abs(2 * velocityMag * Math.sin(velocityAngle)) / g()
   
-    function velocityAtTime(t: number): [number,number]{
-      return [xVelocity, yVelocity * -g() * t]
-    }
+    // function velocityAtTime(t: number): [number,number]{
+    //   return [xVelocity, yVelocity * -g() * t]
+    // }
     function positionAtTime(t: number): [number, number] {
       return [xVelocity * t, yVelocity * t - 0.5 * g() * t ** 2]
     }
@@ -103,7 +103,7 @@ function round(x){
                 t={[0, timeOfFlight]}
                 opacity={0.4}
                 samples={Math.min(timeOfFlight * 50,100)}
-                style="dashed"
+                style={"dashed"}
               />
               <Point
                 x={restingX}
