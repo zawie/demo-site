@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import {Button} from 'antd';
+
 import {
     Mafs,
     useStopwatch,
@@ -8,6 +10,7 @@ import {
     Vector,
     Polygon,
   } from "mafs"
+import { lightblue } from 'color-name';
   
   export default function ProjectileMotion() {
     const xSpan = 1.75
@@ -100,19 +103,19 @@ import {
         </Mafs>
   
         <div className="p-4 bg-black border-t border-gray-900 space-x-4">
-          <button
+          <Button
             className="bg-gray-200 font-bold px-4 py-1 rounded-sm"
             onClick={start}
             disabled={yVelocity <= 0}
           >
             Start
-          </button>
-          <button
+          </Button>
+          <Button
             className="bg-gray-200 font-bold px-4 py-1 rounded-sm"
             onClick={stop}
           >
             Reset
-          </button>
+          </Button>
         </div>
       </>
     )
