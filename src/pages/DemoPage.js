@@ -23,7 +23,6 @@ export default function DemoPage({match}) {
               extra={<Button onClick={handle.enter} shape="circle" type="primary"><div style={{display:"flex", justifyContent:"center"}}>
                   <FullscreenOutlined style={{fontSize:20}}/>
                 </div></Button>}
-              style={{height:'100vh', minHeight:'100vh'}}
             >
               <FullScreen handle={handle}>
                   <DemoToRender height={Math.min(height,width)}></DemoToRender>
