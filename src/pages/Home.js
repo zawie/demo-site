@@ -25,7 +25,7 @@ export default function Home() {
                 <br></br>
                 <Card title={demo['title']} className="AboutCard">
                   <p>{demo['description']}</p>
-                  <Button href={`/${key}`} type="primary" shape="round">Run</Button>              
+                  <Button href={`/demos/${key}`} type="primary" shape="round">Run</Button>              
                 </Card>
               </>
             );
