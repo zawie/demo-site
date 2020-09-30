@@ -6,10 +6,10 @@
         "help":"Drag the yellow arrow to adjust the force of gravity, and drag the red point to adjust initial velocity."
     },
 
-    "chargeField":{
-        "title":"Charge field",
+    "electricField":{
+        "title":"Electric Field",
         "date":"9/30/2020",
-        "description":"A char field simulator.",
-        "help":"Drag the electron and proton around to change the field."
+        "description":"An electric field with two electrons (in red) and two protons (in yellow).",
+        "help":"Drag the electrons and protons around to change the field. Drag the pink indicator to measure the field at particular points."
     }
 }
