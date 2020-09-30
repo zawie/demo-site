@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button, Divider} from 'antd';
+import {CloseOutlined} from '@ant-design/icons'; 
 import Components from "../mafApps/DemoIndex";
 
 const demos = require('../demos.json')
@@ -13,7 +14,7 @@ export default function DemoPage({match}) {
     <div>
         <div className="Main">
           {/* About Card */}
-          <Card title={demo['title']} className="AboutCard" extra={<Button href='/' danger={true} type='round'>Back</Button>}>
+          <Card title={demo['title']} className="AboutCard" extra={<Button href='/' type={"text"} danger={true}><CloseOutlined/></Button>}>
             <DemoToRender></DemoToRender>
             <Divider orientation="left">Description</Divider>
             <p>{demo['description']}</p>
