@@ -8,10 +8,7 @@ export default function DemoPage({match}) {
   //Get demo key and demo information
   const { params: { key } } = match;
   const demo = demos[key]
-  console.log(key);
   const DemoToRender = Components[key];
-  console.log("AHHH",DemoToRender);
-  //Return elements
   return (
     <div>
         <div className="Main">
