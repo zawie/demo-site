@@ -2,8 +2,8 @@
     "ProjectileMotion": {
         "title":"Projectile Motion",
         "date":"9/29/2020",
-        "description":"idk something cool, i guess.",
-        "help":"to use this app, just use it idiot.",
+        "description":"A simple projectile motion simulator.",
+        "help":"Drag the yellow arrow to adjust the force of gravity, and drag the red point to adjust initial velocity.",
         "image":"nah"
     }
 }
