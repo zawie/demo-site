@@ -1,8 +1,15 @@
 {
-    "ProjectileMotion": {
+    "projectileMotion": {
         "title":"Projectile Motion",
         "date":"9/29/2020",
         "description":"A simple projectile motion simulator.",
         "help":"Drag the yellow arrow to adjust the force of gravity, and drag the red point to adjust initial velocity."
+    },
+
+    "chargeField":{
+        "title":"Charge field",
+        "date":"9/30/2020",
+        "description":"A char field simulator.",
+        "help":"Drag the electron and proton around to change the field."
     }
 }

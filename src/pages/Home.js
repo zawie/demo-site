@@ -1,10 +1,18 @@
 import React from 'react';
 import { Card, Divider, Button} from 'antd';
 import {useHistory} from 'react-router-dom';
+const defaultImage = require(`../thumbnails/default.png`);
 
 const { Meta } = Card;
 const demos = require('../demos.json')
 
+function getThumbnail(key){
+  try{
+    return require(`../thumbnails/${key}.png`)
+  } catch {
+    return defaultImage
+  }
+}
 export default function Home() {
   const histroy = useHistory();
   return (
@@ -27,7 +35,7 @@ export default function Home() {
               <div style={{margin:5}}>
                 <Card 
                   style ={{width:300,height:300,order:i}}
-                  cover={<img alt="No Image" src={require(`../thumbnails/${key}.png`)} width={300}/>}
+                  cover={<img alt="No Image" src={getThumbnail(key)} width={300}/>}
                   hoverable={true}
                   extra={<Button type={'primary'} shape='round' size='small' > Run </Button>}
                   onClick = {()=> histroy.push(`/demos/${key}`)}

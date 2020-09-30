@@ -1,4 +1,5 @@
 import "mafs/index.css";
 let Components = {};
-Components['ProjectileMotion'] = require('./ProjectileMotion').default;
+Components['projectileMotion'] = require('./projectileMotion').default;
+
 export default Components
