@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Divider, Button} from 'antd';
 import {useHistory} from 'react-router-dom';
+import {PlayCircleOutlined} from '@ant-design/icons'; 
 const defaultImage = require(`../thumbnails/default.png`);
 
 const { Meta } = Card;
@@ -37,7 +38,7 @@ export default function Home() {
                   style ={{width:300,height:300,order:i}}
                   cover={<img alt="No Image" src={getThumbnail(key)} width={300}/>}
                   hoverable={true}
-                  extra={<Button type={'primary'} shape='round' size='small' > Run </Button>}
+                  extra={<Button type={'primary'} shape='round' size='small' style={{display:'flex', alignItems: 'center', justifyContent:'center'}}>Run <PlayCircleOutlined/></Button>}
                   onClick = {()=> histroy.push(`/demos/${key}`)}
                   title={demo['title']} 
                 > 

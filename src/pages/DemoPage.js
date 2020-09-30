@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Divider} from 'antd';
-import {CloseOutlined} from '@ant-design/icons'; 
+import {CloseOutlined, FullscreenExitOutlined, FullscreenOutlined} from '@ant-design/icons'; 
 import Components from "../mafApps/DemoIndex";
 
 const demos = require('../demos.json')
