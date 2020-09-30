@@ -17,7 +17,7 @@ function round(x){
   return Math.trunc(x*1000)/1000
 }
 
-export default function ProjectileMotion() {
+export default function ProjectileMotion({height}) {
   const xSpan = 1.75
   const ySpan = 1.75
   const initialVelocity = useMovablePoint([0.5, 1.5], {color:'red'})
@@ -67,6 +67,7 @@ export default function ProjectileMotion() {
       <Mafs
         xAxisExtent={[1.25 - xSpan, 1.25 + xSpan]}
         yAxisExtent={[1.25 - ySpan, 1.25 + ySpan]}
+        height={height-200}
       >
         <Polygon
           points={[

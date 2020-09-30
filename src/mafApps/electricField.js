@@ -14,7 +14,7 @@ function round(x){
   return Math.trunc(x*100)/100
 }
 
-export default function ChargeField() {
+export default function ChargeField({height}) {
   const protons = [
     useMovablePoint([1.501, 1.501], {color:'yellow'}),
     useMovablePoint([-1.499, -1.499], {color:'yellow'})
@@ -39,7 +39,7 @@ export default function ChargeField() {
 
   const a = useMovablePoint([0, 0], {color:'pink'})
   return (
-    <Mafs>
+    <Mafs height={height}>
       {/* <CartesianCoordinates subdivisions={2} /> */}
       <VectorField
         xy={(x, y) => vec.scale(chargeAtPoint([x,y]),0.4)}

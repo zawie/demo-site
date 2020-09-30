@@ -98,3 +98,11 @@ input[type="button"] {
   width: 30vw;
   margin: 0 auto;
 }
+
+.fullscreen {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
