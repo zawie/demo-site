@@ -15,7 +15,7 @@ export default function Header() {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            Physics Simulations <p style={{display: "inline", color: "gray"}}>by Zawie</p>
+            Physics Demos <p style={{display: "inline", color: "gray"}}>by Zawie</p>
           </Navbar.Brand>
         </Navbar>
       </>
