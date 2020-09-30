@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'antd';
+import { Card, Button, Divider} from 'antd';
 import Components from "../mafApps/DemoIndex";
 
 const demos = require('../demos.json')
@@ -15,10 +15,9 @@ export default function DemoPage({match}) {
           {/* About Card */}
           <Card title={demo['title']} className="AboutCard" extra={<Button href='/' danger={true} type='round'>Back</Button>}>
             <DemoToRender></DemoToRender>
-            <h6>Description</h6>
+            <Divider orientation="left">Description</Divider>
             <p>{demo['description']}</p>
-            <h6>Instructions</h6>
-            <p>{demo['help']}</p>
+            <p><b>Instructions: </b>{demo['help']}</p>
           </Card>
         </div>
       </div>
