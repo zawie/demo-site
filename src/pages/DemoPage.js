@@ -16,7 +16,7 @@ export default function DemoPage({match}) {
   const { height, width } = useWindowDimensions();
   return (
     <div>
-        <div className="Main" style={{height:'100vh', minHeight:'100vh'}}>
+        <div className="Main" style={{margin:20}}>
     
             <Card 
               title={demo['title']} 
