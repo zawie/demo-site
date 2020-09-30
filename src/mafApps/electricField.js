@@ -37,7 +37,7 @@ export default function ChargeField({height}) {
     return vector
   }
 
-  const a = useMovablePoint([0, 0], {color:'pink'})
+  const a = useMovablePoint([0, 0], {color:'orange'})
   return (
     <Mafs height={height}>
       {/* <CartesianCoordinates subdivisions={2} /> */}
@@ -46,12 +46,12 @@ export default function ChargeField({height}) {
         step={0.5}
       />
       <Vector
-        color = 'pink'
+        color = 'orange'
         tail = {[a.x,a.y]}
         tip ={vec.add([a.x,a.y],chargeAtPoint([a.x,a.y]))}
       /> 
       <Text
-        color ='pink'
+        color ='orange'
         x={a.x}
         y={a.y}
         attach="w"

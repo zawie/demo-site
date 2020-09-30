@@ -10,6 +10,6 @@
         "title":"Electric Field",
         "date":"9/30/2020",
         "description":"An electric field with two electrons (in red) and two protons (in yellow).",
-        "help":"Drag the electrons and protons around to change the field. Drag the pink indicator to measure the field at particular points."
+        "help":"Drag the electrons and protons around to change the field. Drag the orange indicator to measure the field at particular points."
     }
 }
