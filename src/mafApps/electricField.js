@@ -52,7 +52,7 @@ export default function ChargeField({height}) {
         }
 
         }
-        opacity={(x,y) =>{
+        xyOpacity={(x,y) =>{
           var v = chargeAtPoint([x,y])
           var c = vec.mag(v);
           return Math.max(Math.min(c,1),0)
