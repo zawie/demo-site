@@ -42,7 +42,22 @@ export default function ChargeField({height}) {
     <Mafs height={height}>
       {/* <CartesianCoordinates subdivisions={2} /> */}
       <VectorField
-        xy={(x, y) => vec.scale(chargeAtPoint([x,y]),0.4)}
+        xy={(x, y) => {
+          const maxMag = 0.25
+          var v = vec.scale(chargeAtPoint([x,y]),0.5)
+          if (vec.mag(v)>maxMag){
+            v = vec.scale(vec.norm(v),maxMag)
+          }
+          return v
+        }
+
+        }
+        opacity={(x,y) =>{
+          var v = chargeAtPoint([x,y])
+          var c = vec.mag(v);
+          return Math.max(Math.min(c,1),0)
+        }}
+        opacityStep = {0.2}
         step={0.5}
       />
       <Vector
