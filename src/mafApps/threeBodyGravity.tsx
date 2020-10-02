@@ -77,8 +77,9 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
   }
 
   deltaVelocityCollision(p:planet, q:planet): vector {
-    return vec.scale(p.velocity,0.5*(p.mass-q.mass)/(p.mass+q.mass))
+    return vec.scale(p.velocity,-0.5*(p.mass-q.mass)/(p.mass+q.mass))
   }
+  
   constructor(props){
       super(props)
       this.height = props.height
@@ -125,7 +126,7 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
         //Calculate delta
         const dP:vector = this.deltaPosition(p)
         const futurePos:vector = vec.add(p.position,dP)
-        const q = this.getCollision(p,futurePos,planets);
+        const q = null //this.getCollision(p,futurePos,planets);
         if (q==null){
             //Normal movement
             deltaP.set(p,dP)
