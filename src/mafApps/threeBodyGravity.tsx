@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import {Button} from 'antd';
+import {StepForwardOutlined,ForwardOutlined,PauseOutlined,FastBackwardOutlined} from '@ant-design/icons'; 
 import clamp from "lodash.clamp"
 import {
     Mafs,
@@ -14,6 +15,7 @@ import {
     CartesianCoordinates
   } from "mafs"
 
+const clockButtonStyle = {display:"flex",justifyContent:"center",alignContent:"center"}
 const vec = require('vec-la');
 
 function round(x){
@@ -37,6 +39,7 @@ interface IProps {
 interface IState {
   loading: boolean,
   time: number,
+  playing: boolean,
   planets: planet[]
 }
 
@@ -112,7 +115,7 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
       planet0.force = this.netForce(planet0,planets);
       planet1.force = this.netForce(planet1,planets);
       planet2.force = this.netForce(planet2,planets);
-      this.state = {loading:false, time:0, planets:planets}
+      this.state = {loading:false, time:0, planets:planets, playing:false}
       console.log(this.state)
   }
 
@@ -147,11 +150,13 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
   }
 
   tick() {
-    //Update time and planets
-    this.setState(s => ({
-      time: s.time + 1/1000,
-      planets: this.computePhysics(s.planets)
-    }));
+    if (this.state.playing){
+      //Update time and planets
+      this.setState(s => ({
+        time: s.time + 1/1000,
+        planets: this.computePhysics(s.planets)
+      }));
+    }
   }
 
   componentDidMount() {
@@ -160,6 +165,24 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+
+  // Clock calls
+  start(){
+    this.setState(s => ({playing:true}))
+  }
+
+  step(){
+    this.setState(s => ({playing:true}))
+    setTimeout(()=>this.setState(s => ({playing:false})),10)
+  }
+
+  restart(){
+    this.setState(s => ({playing:false}))
+  }
+
+  pause(){
+    this.setState(s => ({playing:false}))
   }
 
   render(){
@@ -213,17 +236,11 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
 
 
         {/* Stop watch buttons */}
-        <div className="p-4 bg-black border-t border-gray-900 space-x-4">
-            <Button
-            className="bg-gray-200 font-bold px-4 py-1 rounded-sm"
-            >
-            Start
-            </Button>
-            <Button
-            className="bg-gray-200 font-bold px-4 py-1 rounded-sm"
-            >
-            Reset
-            </Button>
+        <div style={{display:'flex', margin:10}}>
+            <Button onClick={()=>this.restart()} style={clockButtonStyle} type={"text"} danger={true}><FastBackwardOutlined/></Button>
+            <Button onClick={()=>this.pause()} style={clockButtonStyle} type={"text"}><PauseOutlined/></Button>
+            <Button onClick={()=>this.step()} style={clockButtonStyle} type={"text"}><StepForwardOutlined/></Button>
+            <Button onClick={()=>this.start()} style={clockButtonStyle} type={"link"}><ForwardOutlined/></Button>
         </div>
         </>
     )
