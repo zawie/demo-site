@@ -15,7 +15,7 @@
         "WIP":false
     },
 
-    "threBodyGravity":{
+    "threeBodyGravity":{
         "title":"Orbital Dynamics",
         "date":"10/1/2020",
         "description":"Planets!",

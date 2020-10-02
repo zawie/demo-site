@@ -164,7 +164,7 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
   render(){
     const span = 5;
     console.log(this.state.loading, "AHHHH")
-    if (this.state.loading === false) return (<p> loading </p>)
+    //if (this.state.loading === false) return (<p> loading </p>)
     const planets: planet[] = this.state.planets
     return (
         <>
