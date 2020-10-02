@@ -37,7 +37,15 @@ export default function Home() {
                   style ={{width:300,height:300,order:i}}
                   cover={<img alt="No Image" src={getThumbnail(key)} width={300}/>}
                   hoverable={true}
-                  extra={<Button type={'primary'} shape='round' size='small' style={{display:'flex', alignItems: 'center', justifyContent:'center'}}>Run <PlayCircleOutlined/></Button>}
+                  extra={<Button danger={demo["WIP"]}
+                                 type={'primary'} 
+                                 shape='round'
+                                 size='small' 
+                                 style={{display:'flex', 
+                                 alignItems: 'center', 
+                                 justifyContent:'center'}}>
+                                   {demo['WIP'] ? "Test" : "Run"} <PlayCircleOutlined/>
+                                </Button>}
                   onClick = {()=> histroy.push(`/demos/${key}`)}
                   title={demo['title']} 
                 > 

@@ -3,20 +3,23 @@
         "title":"Projectile Motion",
         "date":"9/29/2020",
         "description":"A simple projectile motion simulator.",
-        "help":"Drag the yellow arrow to adjust the force of gravity, and drag the red point to adjust initial velocity."
+        "help":"Drag the yellow arrow to adjust the force of gravity, and drag the red point to adjust initial velocity.",
+        "WIP":false
     },
 
     "electricField":{
         "title":"Electric Field",
         "date":"9/30/2020",
         "description":"An electric field with two electrons (in red) and two protons (in yellow).",
-        "help":"Drag the electrons and protons around to change the field. Drag the orange indicator to measure the field at particular points."
+        "help":"Drag the electrons and protons around to change the field. Drag the orange indicator to measure the field at particular points.",
+        "WIP":false
     },
 
     "threeBodyGravity":{
         "title":"Three Body Gravity",
         "date":"10/1/2020",
         "description":"N/A",
-        "help":"N/A"
+        "help":"N/A",
+        "WIP":true
     }
 }
