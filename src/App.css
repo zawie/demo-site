@@ -106,3 +106,7 @@ input[type="button"] {
   width: 100%;
   overflow: hidden;
 }
+
+.MafsView {
+  font-family: "Computer Modern Serif", serif;
+}
