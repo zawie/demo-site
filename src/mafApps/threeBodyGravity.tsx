@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import {Button} from 'antd';
 import {StepForwardOutlined,ForwardOutlined,PauseOutlined,FastBackwardOutlined} from '@ant-design/icons'; 
-import clamp from "lodash.clamp"
+import {Vector2} from 'mafs/typings/math'
+
 import {
     Mafs,
     useStopwatch,
@@ -12,7 +13,8 @@ import {
     Polygon,
     Text,
     Circle,
-    CartesianCoordinates
+    CartesianCoordinates,
+    UseMovablePoint
   } from "mafs"
 
 const clockButtonStyle = {display:"flex",justifyContent:"center",alignContent:"center"}
@@ -43,10 +45,18 @@ interface IState {
   planets: planet[]
 }
 
+
 export default class TwoBodyGravity extends React.Component<IProps,IState> {
   private height: number;
   static deltaT = 1/10000;
   interval;
+
+  pos0:Vector2 = [0,0]; 
+  vel0:Vector2= [0,0];
+  pos1:Vector2 = [2,0]; 
+  vel1:Vector2= [0,-200];
+  pos2:Vector2 = [0,4]; 
+  vel2:Vector2= [100,0];
 
   netForce(p:planet,planets:planet[]): vector {
       function f(a:planet,b:planet): vector {
@@ -83,40 +93,51 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
     return vec.scale(p.velocity,-0.5*(p.mass-q.mass)/(p.mass+q.mass))
   }
   
+  resetBodies(){
+    this.state.planets.forEach(p=>{
+      p.force = [0,0]
+      p.velocity = [0,0]
+    })
+  }
   constructor(props){
       super(props)
+      this.state = {loading:true, playing:false, time:0, planets:planets}
       this.height = props.height
-      var planet0:planet = {
-        position: [0,0], //Initial Position
-        velocity: [0,0], //Initial Velocity
+      //Planet 0
+      let planet0:planet = {
+        position: this.pos0, //Initial Position
+        velocity: this.vel0, //Initial Velocity
         force: null,
         mass: 333000,
         radius: 0.7,
-        color:'yellow'
+        color:'yellow',
       }
+      //Planet1
       var planet1:planet = {
-        position: [3,0], //Initial Position
-        velocity: [0,200], //Initial Velocity
+        position: this.pos1, //Initial Position
+        velocity: this.vel1, //Initial Velocity
         force: null,
         mass: 1,
         radius: 0.3,
-        color:'green'
+        color:'green',
       }
+      //Planet2
+      let pos2:Vector2 = [0,0]; 
+      let vel2:Vector2= [0,0];
       var planet2:planet = {
-        position: [1.1,0.5], //Initial Position
-        velocity: [0,-300], //Initial Velocity
+        position: this.pos2, //Initial Position
+        velocity: this.vel2, //Initial Velocity
         force: null,
         mass: 0.9,
         radius: 0.25,
-        color:'gray'
+        color:'gray',
       }
       //Compute initial force
       var planets: planet[] = [planet0,planet1,planet2]
       planet0.force = this.netForce(planet0,planets);
       planet1.force = this.netForce(planet1,planets);
       planet2.force = this.netForce(planet2,planets);
-      this.state = {loading:false, time:0, planets:planets, playing:false}
-      console.log(this.state)
+      this.state = {loading:true, playing:false, time:0, planets:planets}
   }
 
   computePhysics(planets){
@@ -171,23 +192,20 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
   start(){
     this.setState(s => ({playing:true}))
   }
-
   step(){
-    this.setState(s => ({playing:true}))
-    setTimeout(()=>this.setState(s => ({playing:false})),10)
+    this.start()
+    setTimeout(()=>this.pause(),10)
   }
-
   restart(){
-    this.setState(s => ({playing:false}))
+    this.pause()
+    this.resetBodies()
   }
-
   pause(){
     this.setState(s => ({playing:false}))
   }
 
   render(){
     const span = 5;
-    console.log(this.state.loading, "AHHHH")
     //if (this.state.loading === false) return (<p> loading </p>)
     const planets: planet[] = this.state.planets
     return (
@@ -198,7 +216,6 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
             yAxisExtent={[-span, span]}
             height={this.height-200}
         >
-            <CartesianCoordinates />
             {planets.map((planet,i)=>{
                 var currentKey = i*100
                 function k(){
@@ -223,7 +240,8 @@ export default class TwoBodyGravity extends React.Component<IProps,IState> {
                     {/* The force vector */}
                     <Vector
                         key = {k()}
-                        color = {i == 1 ? 'red' : 'blue'}
+                        color = {'white'}
+                        opacity = {0.5}
                         tail = {planet.position}
                         tip = {vec.add(planet.position,vec.scale(planet.force,1/10000))}
                     />
