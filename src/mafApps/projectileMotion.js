@@ -10,7 +10,9 @@ import {
     FunctionGraph,
     Vector,
     Polygon,
+    Vector2
   } from "mafs"
+
 //import { relativeTimeRounding } from 'moment';
   
 function round(x){
@@ -48,7 +50,7 @@ export default function ProjectileMotion({height}) {
   // function velocityAtTime(t: number): [number,number]{
   //   return [xVelocity, yVelocity * -g() * t]
   // }
-  function positionAtTime(t: number): [number, number] {
+  function positionAtTime(t) {
     return [xVelocity * t, yVelocity * t - 0.5 * g() * t ** 2]
   }
   const [restingX, restingY] = positionAtTime(timeOfFlight)

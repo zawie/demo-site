@@ -30,7 +30,17 @@ interface planet {
     color: string
 }
 
-export default class TwoBodyGravity extends React.Component {
+interface IProps {
+  height: number
+}
+
+interface IState {
+  loading: boolean,
+  time: number,
+  planets: planet[]
+}
+
+export default class TwoBodyGravity extends React.Component<IProps,IState> {
   private height: number;
   static deltaT = 1/10000;
   interval;
@@ -101,7 +111,7 @@ export default class TwoBodyGravity extends React.Component {
       planet0.force = this.netForce(planet0,planets);
       planet1.force = this.netForce(planet1,planets);
       planet2.force = this.netForce(planet2,planets);
-      this.state = {time:0, planets:planets}
+      this.state = {loading:false, time:0, planets:planets}
       console.log(this.state)
   }
 
@@ -153,6 +163,9 @@ export default class TwoBodyGravity extends React.Component {
 
   render(){
     const span = 5;
+    console.log(this.state.loading, "AHHHH")
+    if (this.state.loading === false) return (<p> loading </p>)
+    const planets: planet[] = this.state.planets
     return (
         <>
         {/* Mafs */}
@@ -162,7 +175,7 @@ export default class TwoBodyGravity extends React.Component {
             height={this.height-200}
         >
             <CartesianCoordinates />
-            {this.state.planets.map((planet,i)=>{
+            {planets.map((planet,i)=>{
                 var currentKey = i*100
                 function k(){
                     currentKey--;

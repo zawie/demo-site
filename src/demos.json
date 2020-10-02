@@ -13,13 +13,5 @@
         "description":"An electric field with two electrons (in red) and two protons (in yellow).",
         "help":"Drag the electrons and protons around to change the field. Drag the orange indicator to measure the field at particular points.",
         "WIP":false
-    },
-
-    "threeBodyGravity":{
-        "title":"Three Body Gravity",
-        "date":"10/1/2020",
-        "description":"N/A",
-        "help":"N/A",
-        "WIP":true
     }
 }
