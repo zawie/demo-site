@@ -1,3 +1,5 @@
+A website to host a variety of physics demos for educatonal purposes
+
 ## Available Scripts
 
 In the project directory, you can run:
