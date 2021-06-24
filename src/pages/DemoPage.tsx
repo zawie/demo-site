@@ -15,25 +15,26 @@ export default function DemoPage({match}) {
   const handle = useFullScreenHandle();
   const { height, width } = useWindowDimensions();
   return (
-    <div>
-        <div className="Main" style={{margin:20}}>
-    
-            <Card 
-              title={demo['title']} 
-              extra={<Button onClick={handle.enter} shape="circle" type="primary"><div style={{display:"flex", justifyContent:"center"}}>
-                  <FullscreenOutlined style={{fontSize:20}}/>
-                </div></Button>}
-            >
-              <FullScreen handle={handle}>
-                  <DemoToRender height={Math.min(height,width)}></DemoToRender>
-              </FullScreen>
-            </Card>
-            <br></br>
-            <Card title={"Description"}>
-              <p>{demo['description']}</p>
-              <p><b>Instructions: </b>{demo['help']}</p>
-            </Card>
-        </div>
-      </div>
+    <div className="Main" style={{margin:20}}>
+        {/* Demo card */}
+        <Card 
+          title={demo['title']} 
+          extra={<Button onClick={handle.enter} shape="circle" type="primary"><div style={{display:"flex", justifyContent:"center"}}>
+              <FullscreenOutlined style={{fontSize:20}}/>
+            </div></Button>}
+        >
+          <FullScreen handle={handle}>
+              <DemoToRender height={Math.min(height,width)}></DemoToRender>
+          </FullScreen>
+        </Card>
+
+        <br></br>
+
+        {/* Description Card */}
+        <Card title={"Description"}>
+          <p>{demo['description']}</p>
+          <p><b>Instructions: </b>{demo['help']}</p>
+        </Card>
+    </div>
   );
 }
