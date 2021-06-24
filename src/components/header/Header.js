@@ -14,8 +14,7 @@ export default function Header() {
               width="30"
               height="30"
               className="d-inline-block align-top"
-            />{' '}
-            Physics Demos <p style={{display: "inline", color: "gray"}}>by Zawie</p>
+            />{' '} Demos <p style={{display: "inline", color: "gray"}}>by Adam Zawierucha</p>
           </Navbar.Brand>
         </Navbar>
       </>
