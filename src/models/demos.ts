@@ -16,6 +16,12 @@ export const DEMOS: Demo[] = [
         help: "Drag the electrons and protons around to change the field. Drag the orange indicator to measure the field at particular points.",
     },
     {
+        title: "Flocking Boids",
+        creationDate: new Date('6/24/2021'),
+        description: `Boids is an artificial life program, developed by Craig Reynolds in 1986, which simulates the flocking behaviour of birds. His paper on this topic was published in 1987 in the proceedings of the ACM SIGGRAPH conference. The name "boid" corresponds to a shortened version of "bird-oid object", which refers to a bird-like object. Incidentally, "boid" is also a New York Metropolitan dialect pronunciation for "bird."`,
+        help: "Control the parameters on the bottom right corner."
+    },
+    {
         title: "Orbital Dynamics",
         creationDate: new Date('9/30/2020'),
         isWIP: true
