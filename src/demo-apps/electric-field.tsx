@@ -7,14 +7,15 @@ import {
   Vector,
   Text,
 } from "mafs"
-import { concat } from 'async';
+import { DemoAppProps } from '../models/definitions'
 const vec = require('vec-la');
 
 function round(x){
   return Math.trunc(x*100)/100
 }
 
-export default function ChargeField({height}) {
+export default function ChargeField(props: DemoAppProps) {
+  const height = props.height
   const protons = [
     useMovablePoint([1.501, 1.501], {color:'yellow'}),
     useMovablePoint([-1.499, -1.499], {color:'yellow'})

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {Button} from 'antd';
 import clamp from "lodash.clamp"
+import { DemoAppProps } from '../models/definitions'
 
 import {
     Mafs,
@@ -18,7 +19,8 @@ function round(x){
   return Math.trunc(x*1000)/1000
 }
 
-export default function ProjectileMotion({height}) {
+export default function ProjectileMotion(props: DemoAppProps) {
+  const height = props.height
   const xSpan = 1.75
   const ySpan = 1.75
   const initialVelocity = useMovablePoint([0.5, 1.5], {color:'red'})

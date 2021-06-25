@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Card, Button, Divider, Descriptions} from 'antd';
 import {CloseOutlined, FullscreenExitOutlined, FullscreenOutlined} from '@ant-design/icons'; 
-import Components from "../mafApps/DemoIndex";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import useWindowDimensions from "../util/useWindowDimensions";
+import {Demo, DemoAppProps} from '../models/definitions'
+import { Result } from 'antd'
+import "mafs/index.css";
+import { getDemoComponent } from '../models/demos';
 
-const demos = require('../demos.json')
-
-export default function DemoPage({match}) {
+export default function DemoPage(demo: Demo) {
   //Get demo key and demo information
-  const { params: { key } } = match;
-  const demo = demos[key]
-  const DemoToRender = Components[key];
+  const DemoToRender: FunctionComponent<DemoAppProps> | null= getDemoComponent(demo)
   const handle = useFullScreenHandle();
   const { height, width } = useWindowDimensions();
   return (
@@ -24,7 +23,8 @@ export default function DemoPage({match}) {
             </div></Button>}
         >
           <FullScreen handle={handle}>
-              <DemoToRender height={Math.min(height,width)}></DemoToRender>
+              {DemoToRender !== null ? <DemoToRender height={Math.min(height,width)} />
+                                     : <Result status="warning" title="This application was not found." /> }
           </FullScreen>
         </Card>
 
@@ -32,8 +32,8 @@ export default function DemoPage({match}) {
 
         {/* Description Card */}
         <Card title={"Description"}>
-          <p>{demo['description']}</p>
-          <p><b>Instructions: </b>{demo['help']}</p>
+          <p>{demo.description ?? "No description."}</p>
+          <p><b>Instructions: </b>{demo.help ?? "No instructions."}</p>
         </Card>
     </div>
   );

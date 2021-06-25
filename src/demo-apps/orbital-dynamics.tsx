@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {Button} from 'antd';
 import {StepForwardOutlined,ForwardOutlined,PauseOutlined,FastBackwardOutlined} from '@ant-design/icons'; 
 import {Vector2} from 'mafs/typings/math'
+import { DemoAppProps } from '../models/definitions'
 
 import {
     Mafs,
@@ -34,10 +35,6 @@ interface planet {
     color: string
 }
 
-interface IProps {
-  height: number
-}
-
 interface IState {
   loading: boolean,
   time: number,
@@ -45,8 +42,7 @@ interface IState {
   planets: planet[]
 }
 
-
-export default class TwoBodyGravity extends React.Component<IProps,IState> {
+export default class TwoBodyGravity extends React.Component<DemoAppProps,IState> {
   private height: number;
   static deltaT = 1/10000;
   interval;

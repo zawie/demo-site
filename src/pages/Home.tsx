@@ -5,15 +5,10 @@ import {PlayCircleOutlined} from '@ant-design/icons';
 const defaultImage = require(`../thumbnails/default.png`);
 
 const { Meta } = Card;
-const demos = require('../demos.json')
+import {DEMOS, getDemoIdentifer, getThumbnail } from '../models/demos'
+import { Demo } from '../models/definitions';
 
-function getThumbnail(key){
-  try{
-    return require(`../thumbnails/${key}.png`)
-  } catch {
-    return defaultImage
-  }
-}
+const i = 0
 export default function Home() {
   const histroy = useHistory();
   return (
@@ -29,30 +24,27 @@ export default function Home() {
       </p>
       <Divider orientation="left">Demos</Divider> 
       <div style = {{display:'flex',justifyContent:'center', flexWrap:"wrap", alignContent:'space-around'}}>
-          {Object.keys(demos).map((key,i) => {
-            let demo = demos[key];
-            return(
+          {DEMOS.map((demo: Demo, i: number) =>
               <div style={{margin:5}}>
                 <Card 
                   style ={{width:300,height:300,order:i}}
-                  cover={<img alt="No Image" src={getThumbnail(key)} width={300}/>}
+                  cover={<img alt="No Image" src={getThumbnail(demo)} width={300}/>}
                   hoverable={true}
-                  extra={<Button danger={demo["WIP"]}
+                  extra={<Button danger={demo.isWIP}
                                  type={'primary'} 
                                  shape='round'
                                  size='small' 
                                  style={{display:'flex', 
                                  alignItems: 'center', 
                                  justifyContent:'center'}}>
-                                   {demo['WIP'] ? "Test" : "Run"} <PlayCircleOutlined/>
+                                   {demo.isWIP ? "Test" : "Run"} <PlayCircleOutlined/>
                                 </Button>}
-                  onClick = {()=> histroy.push(`/demos/${key}`)}
-                  title={demo['title']} 
+                  onClick = {()=> histroy.push(`/${getDemoIdentifer(demo)}`)}
+                  title={demo.title} 
                 > 
                 </Card>
               </div>
-            );
-          })} 
+          )} 
       </div>
     </div>
   );
