@@ -15,8 +15,8 @@ export default function Home() {
     <div className="Main" style={{margin:"20px"}}>
       <Divider orientation="left">About</Divider> 
       <p>
-        This site was developed by <a href="https://zawie.io">Adam Zawierucha</a> as a side project. The goal of this project is to create and host a variety of physics
-        demonstrations and simulations for educational purposes. If you are an educator or student and have any suggestions for new demonstrations or notice any errors,
+        This site was developed by <a href="https://zawie.io">Adam Zawierucha</a> as a side project. The goal of this project is to create and host a variety of physics,
+        mathematics, computer science, and other interesting demonstrations and simulations. If you have any suggestions for new demonstrations or notice any errors,
         contact the developer at <a href="mailto:zawie@rice.edu">zawie@rice.edu</a>.
       </p>
       <p>
